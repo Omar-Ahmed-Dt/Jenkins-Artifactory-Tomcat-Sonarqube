@@ -11,7 +11,7 @@ services:
       - ./jenkins:/var/jenkins_home:rw
  
   artifactory:
-    image: mattgruter/artifactory
+    image: docker.bintray.io/jfrog/artifactory-oss:latest
     ports:
       - "9090:8080"
     container_name: artifactory
