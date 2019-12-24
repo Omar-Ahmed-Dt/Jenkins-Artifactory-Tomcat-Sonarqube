@@ -1,0 +1,33 @@
+version: "3"
+services:
+  jenkins:
+    image: jenkinsci/jenkins
+    ports:
+      - "8080:8080"
+    container_name: jenkins
+
+    volumes:
+      - ./jenkins:/var/jenkins_home:rw
+      - ./war:/mnt/:rw
+  artifactory:
+    image: docker.bintray.io/jfrog/artifactory-oss:latest
+    ports:
+      - "9090:8081"
+    container_name: artifactory
+    volumes:
+      - ./artifactory:/artifactory:rw
+
+  sonarqube:
+    image: sonarqube:6.7-alpine
+    ports:
+      - 9000:9000
+    container_name: sonarqube
+  tomcat:
+    image: tomcat
+    ports:
+      - 7777:8080
+    container_name: tomcat
+    depends_on:
+      - jenkins
+    volumes:
+      - ./war/:/usr/local/tomcat/webapps
