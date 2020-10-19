@@ -1,7 +1,7 @@
 version: "3"
 services:
   jenkins:
-    image: jenkinsci/jenkins
+    image: jenkins/jenkins
     ports:
       - "8080:8080"
     container_name: jenkins
@@ -10,7 +10,7 @@ services:
       - ./jenkins:/var/jenkins_home:rw
       - ./war:/mnt/:rw
   artifactory:
-    image: docker.bintray.io/jfrog/artifactory-oss:latest
+    image: mattgruter/artifactory
     ports:
       - "9090:8081"
     container_name: artifactory
