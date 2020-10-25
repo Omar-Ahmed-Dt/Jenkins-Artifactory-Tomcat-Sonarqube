@@ -11,9 +11,9 @@ services:
       - ./jenkins:/var/jenkins_home:rw
  
   artifactory:
-    image: mattgruter/artifactory
+    image: mzain/artifactory-oss:5.4.4
     ports:
-      - "9090:8080"
+      - "9090:8081"
     container_name: artifactory
-    volumes: 
-      - ./artifactory:/artifactory:rw
+    volumes:
+      - ./artifactory:/var/opt/jfrog/artifactory:rw
