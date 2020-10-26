@@ -4,29 +4,31 @@ services:
     image: jenkins/jenkins
     ports:
       - "8080:8080"
-    container_name: jenkins
+    container_name: jenkins_container
 
     volumes:
       - ./jenkins:/var/jenkins_home:rw
       - ./war:/mnt/:rw
+  
   artifactory:
-    image: mattgruter/artifactory
+    image: mzain/artifactory-oss:5.4.4
     ports:
       - "9090:8081"
-    container_name: artifactory
+    container_name: artifactory_container
     volumes:
-      - ./artifactory:/artifactory:rw
+      - ./artifactory:/var/opt/jfrog/artifactory:rw
 
   sonarqube:
     image: sonarqube:6.7-alpine
     ports:
       - 9000:9000
-    container_name: sonarqube
+    container_name: sonarqube_container
+
   tomcat:
     image: tomcat
     ports:
       - 7777:8080
-    container_name: tomcat
+    container_name: tomcat_container
     depends_on:
       - jenkins
     volumes:
