@@ -8,6 +8,15 @@ services:
     ports:
       - 8080:8080
     container_name: jenkins
+    deploy:
+      resources:
+        limits:
+          cpus: '500m'
+          memory: 50M
+        reservations:
+          cpus: '200m'
+          memory: 20M
+         
   
   tomcat:
     image: tomcat
@@ -18,3 +27,12 @@ services:
       - jenkins
     volumes:
       - ./war/:/usr/local/tomcat/webapps
+    deploy:
+      resources:
+        limits:
+          cpus: '500m'
+          memory: 50M
+        reservations:
+          cpus: '200m'
+          memory: 20M
+
