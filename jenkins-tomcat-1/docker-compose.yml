@@ -17,7 +17,7 @@ services:
       - ./artifactory:/var/opt/jfrog/artifactory:rw  
   
   tomcat:
-    image: tomcat
+    image: mzain/tomcat
     ports:
       - 7777:8080
     container_name: tomcat
