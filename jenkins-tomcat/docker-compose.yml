@@ -19,7 +19,7 @@ services:
          
   
   tomcat:
-    image: tomcat
+    image: mzain/tomcat
     ports:
       - 7777:8080
     container_name: tomcat
