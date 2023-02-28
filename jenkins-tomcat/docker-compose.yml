@@ -11,12 +11,11 @@ services:
     deploy:
       resources:
         limits:
-          cpus: '500m'
-          memory: 50M
+          cpus: 0.5
+          memory: 3G
         reservations:
-          cpus: '200m'
-          memory: 20M
-         
+          cpus: 0.1
+          memory: 1G
   
   tomcat:
     image: mzain/tomcat
@@ -30,9 +29,9 @@ services:
     deploy:
       resources:
         limits:
-          cpus: '500m'
-          memory: 50M
+          limits:
+          cpus: 0.5
+          memory: 1G
         reservations:
-          cpus: '200m'
-          memory: 20M
-
+          cpus: 0.1
+          memory: 500M
