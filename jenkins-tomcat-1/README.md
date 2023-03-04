@@ -1,3 +1,3 @@
 ## testing for webhook with jenkins
-### before run docker-composer:
+### before run docker-compose:
  * sudo chmod +777 -R jenkins/ war/
