@@ -8,14 +8,14 @@ services:
     ports:
       - 8080:8080
     container_name: jenkins
-    deploy:
-      resources:
-        limits:
-          cpus: 0.5
-          memory: 3G
-        reservations:
-          cpus: 0.1
-          memory: 1G
+    
+  artifactory:
+    image: mzain/artifactory-oss:5.4.4
+    ports:
+      - "9090:8081"
+    container_name: artifactory
+    volumes:
+      - ./artifactory:/var/opt/jfrog/artifactory:rw  
   
   tomcat:
     image: mzain/tomcat
@@ -25,13 +25,4 @@ services:
     depends_on:
       - jenkins
     volumes:
-      - ./war/:/usr/local/tomcat/webapps
-    deploy:
-      resources:
-        limits:
-          limits:
-          cpus: 0.5
-          memory: 1G
-        reservations:
-          cpus: 0.1
-          memory: 500M
+       - ./war/:/usr/local/tomcat/webapps
